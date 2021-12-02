@@ -109,3 +109,54 @@ Creating queries:
 At least 1 query and 1 type in the schema...
 
 ## Query types exercise
+
+Notes:
+- Custom resolvers override native (default resolvers) that exist on type's fields
+- Any resolver that is inside the Query type, it will be the top-level resolver. Any other resolver will be a bottom-level resolver
+
+## Arguments 
+
+```js
+Query: {
+    pets(_, __, context) {
+      // first arg: info passed from parent query, second arg: arguments, third: context (from apollo server)
+      return context.models.Pet.findMany();
+    },
+  },
+```
+
+In the code above `__` are the *arguments* argument. 
+- Arguments must be a part of the schema.
+- Can be added to any field (of any type)
+- Either have to be scalar or input types
+
+
+Example of arguments:
+```js
+const typeDefs = gql`
+  type User {
+    id: ID!
+    username: String!
+  }
+
+  type Pet {
+    id: ID!
+    name: String!
+    type: String!
+    createdAt: String!
+    img: String
+  }
+
+  type Query {
+    pets(type: String!): [Pet]! // pets must accept a type in shape of a string
+  }
+
+  # type Mutation {
+
+  # }
+`;
+```
+
+### Input Types
+* Just like Types, but used only for Arguments
+* All field value types must be 

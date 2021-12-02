@@ -5,19 +5,20 @@
 
 module.exports = {
   Query: {
-    
+    pets(_, __, context) {
+      // first arg: info passed from parent query, second arg: arguments, third: context (from apollo server)
+      return context.models.Pet.findMany();
+    },
   },
-  Mutation: {
-    
-  },
+  // Mutation: {
+
+  // },
   Pet: {
     img(pet) {
       return pet.type === 'DOG'
         ? 'https://placedog.net/300/300'
-        : 'http://placekitten.com/300/300'
-    }
+        : 'http://placekitten.com/300/300';
+    },
   },
-  User: {
-    
-  }
-}
+  // User: {},
+};
