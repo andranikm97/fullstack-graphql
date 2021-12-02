@@ -17,8 +17,15 @@ const typeDefs = gql`
     img: String
   }
 
+  input PetInput {
+    name: String
+    id: ID
+    type: String
+  }
+
   type Query {
-    pets(type: String!): [Pet]!
+    pets(input: PetInput): [Pet]!
+    pet(input: PetInput): Pet
   }
 
   # type Mutation {

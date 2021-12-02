@@ -5,9 +5,12 @@
 
 module.exports = {
   Query: {
-    pets(_, __, context) {
+    pets(_, { input }, context) {
       // first arg: info passed from parent query, second arg: arguments, third: context (from apollo server)
-      return context.models.Pet.findMany();
+      return context.models.Pet.findMany(input);
+    },
+    pet(_, { input }, context) {
+      return context.models.Pet.findOne(input);
     },
   },
   // Mutation: {
