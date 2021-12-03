@@ -114,7 +114,7 @@ Notes:
 - Custom resolvers override native (default resolvers) that exist on type's fields
 - Any resolver that is inside the Query type, it will be the top-level resolver. Any other resolver will be a bottom-level resolver
 
-## Arguments 
+# Arguments 
 
 ```js
 Query: {
@@ -160,3 +160,19 @@ const typeDefs = gql`
 ### Input Types
 * Just like Types, but used only for Arguments
 * All field value types must be 
+
+
+# Mutations
+
+A type on a schema that defines operations clients can perform to mutate data (create, update, delete).
+
+Creating mutations:
+* Define Mutation Type on a Schema using SDL
+* Add fields for Mutation type
+* Add arguments for Mutation fields
+
+The mutation type is put in the schema. Any field in the mutation type must match the function name in the Mutation resolver.
+
+When entering a gql request for a mutation, you must include a *mutation* word in front of the gql object, as in:
+
+![](images/mutations-1.png)

@@ -23,14 +23,20 @@ const typeDefs = gql`
     type: String
   }
 
+  input NewPetInput {
+    name: String!
+    type: String!
+    img: String
+  }
+
   type Query {
     pets(input: PetInput): [Pet]!
     pet(input: PetInput): Pet
   }
 
-  # type Mutation {
-
-  # }
+  type Mutation {
+    pet(input: NewPetInput!): Pet!
+  }
 `;
 
 module.exports = typeDefs;
