@@ -270,3 +270,8 @@ Union query:
 ```
 
 No difference in performance, a very handy tool.
+
+## Relationships
+
+Thinking in graphs: your API is now a set of Nodes that know how to resolve themselves and have links to other Nodes. This allows a client to ask for Nodes and then follow those links to get related Nodes.
+

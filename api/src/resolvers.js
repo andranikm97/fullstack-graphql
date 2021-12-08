@@ -24,6 +24,13 @@ module.exports = {
         ? 'https://placedog.net/300/300'
         : 'http://placekitten.com/300/300';
     },
+    owner(pet, __, ctx) {
+      return ctx.models.User.findOne();
+    },
   },
-  // User: {},
+  User: {
+    pets(user, __, ctx) {
+      return ctx.models.Pet.findMany();
+    },
+  },
 };

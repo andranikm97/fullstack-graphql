@@ -7,11 +7,10 @@ const typeDefs = gql`
   """
   This is a doc string
   """
-  type # This is a comment
-
-  User {
+  type User {
     id: ID!
     username: String!
+    pets: [Pet]!
   }
 
   type Pet {
@@ -20,6 +19,7 @@ const typeDefs = gql`
     type: String!
     createdAt: String!
     img: String
+    owner: User!
   }
 
   input PetInput {
