@@ -1,4 +1,6 @@
-# Introduction
+# Fullstack GraphQL FrontEndMasters Course
+
+# Introduction (SERVER)
 
 GraphQL - what it is: control what you ask and get from an API. It is just a spec.
 
@@ -274,4 +276,7 @@ No difference in performance, a very handy tool.
 ## Relationships
 
 Thinking in graphs: your API is now a set of Nodes that know how to resolve themselves and have links to other Nodes. This allows a client to ask for Nodes and then follow those links to get related Nodes.
+
+
+# Introduction (Client)
 
