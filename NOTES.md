@@ -367,3 +367,8 @@ How to keep cache in sync:
 
 
 2) makes the most sense. 
+
+
+## Optimistic UI
+
+Upon a mutation, optimistically update the array that is displayed, instead of waiting for the API to reply.

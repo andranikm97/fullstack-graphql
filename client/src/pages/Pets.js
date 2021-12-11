@@ -45,11 +45,21 @@ export default function Pets() {
     createPet({
       variables: {
         newPet: { name: input.name, type: input.type },
+        optimisticResponse: {
+          __typename: 'Mutation',
+          addPet: {
+            __typename: 'Pet',
+            id: Date.now() + '',
+            name: input.name,
+            type: input.type,
+            img: 'https://via.placeholder.com/300',
+          },
+        },
       },
     });
   };
 
-  if (allPets.loading || newPet.loading) {
+  if (allPets.loading) {
     return <Loader />;
   }
 
