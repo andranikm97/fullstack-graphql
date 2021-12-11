@@ -7,8 +7,8 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context() {
-    // const user = models.User.findOne();
-    return { models, db };
+    const user = db.get('user').value();
+    return { models, db, user };
   },
 });
 
