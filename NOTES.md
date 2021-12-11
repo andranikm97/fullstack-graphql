@@ -280,3 +280,75 @@ Thinking in graphs: your API is now a set of Nodes that know how to resolve them
 
 # Introduction (Client)
 
+## The Basics
+
+### Operation names
+ 
+"query,mutation, and etc."
+
+Example: 
+
+```js
+query exampleOperationName {
+  properties...
+}
+
+query AllCharacters {
+  characters {
+    results {
+      name
+    }
+  }
+}
+```
+
+**Operations arguments** make queries dynamic and adaptive:
+
+```js
+
+// Without variables
+query AllCharacters {
+  characters(page: 2, filter: "male") { // we want the page to be dynamic
+    results {
+      name
+    }
+  }
+}
+
+// With variables
+query AllCharacters($page: Int) {
+  characters(page: $page, filter: "male") { // we want the page to be dynamic
+    results {
+      name
+    }
+  }
+}
+
+...
+{
+  "page: 1,
+}
+```
+
+**Aliasing** allows to store returned fields in any variable names:
+
+```js
+
+query AllCharacters($page: Int) {
+  characters(page: $page, filter: "male") { // we want the page to be dynamic
+    results {
+      fullName: name // name is returned but then stored in a variable called fullName
+    }
+  }
+}
+```
+
+**Mutations**: 
+
+```js
+mutation CreateCharacter() {
+  createCharacter() {
+    ...
+  }
+}
+```
