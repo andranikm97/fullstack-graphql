@@ -352,3 +352,10 @@ mutation CreateCharacter() {
   }
 }
 ```
+
+## Apollo client
+
+Refer to code at the current commit. One important notice: when we use the mutation query to add a pet to our database, our component does not automatically re-render. This is because there is no state hooked up to it. Even though you could strip it onto the existing pets data array, no other components would know of the change. Thus, we need to use caching to notify the app globally that a new pet has been created.
+
+## Caching
+
