@@ -5,7 +5,7 @@ import PetsList from '../components/PetsList';
 import NewPetModal from '../components/NewPetModal';
 import Loader from '../components/Loader';
 
-const ALLPETS = gql`
+const ALL_PETS = gql`
   query GetPets {
     pets {
       id
@@ -29,8 +29,16 @@ const MAKE_PET = gql`
 
 export default function Pets() {
   const [modal, setModal] = useState(false);
-  const allPets = useQuery(ALLPETS);
-  const [createPet, newPet] = useMutation(MAKE_PET);
+  const allPets = useQuery(ALL_PETS);
+  const [createPet, newPet] = useMutation(MAKE_PET, {
+    update(cache, { data: { addPet } }) {
+      const { pets } = cache.readQuery({ query: ALL_PETS });
+      cache.writeQuery({
+        query: ALL_PETS,
+        data: { pets: [addPet, ...pets] },
+      });
+    },
+  });
 
   const onSubmit = (input) => {
     setModal(false);

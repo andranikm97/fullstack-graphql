@@ -359,3 +359,11 @@ Refer to code at the current commit. One important notice: when we use the mutat
 
 ## Caching
 
+How to keep cache in sync:
+
+1) Refetch matching queries after a mutation
+**2) Use update method on mutation**
+3) Watch queries
+
+
+2) makes the most sense. 
